@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% block title %}View{% endblock %}
+{% block content %}
+    <h1>Tabela</h1>
+    <table>
+        <thead>
+            <th>Ativo</th>
+            <th>Preço Pago</th>
+            <th>Quantidade</th>
+            <th>Valor Pago</th>
+            <th>Data Compra</th>
+            <th>Cotação Atual</th>
+            <th>Valor Atual</th>
+            <th>Lucro/Prejuízo</th>
+            <th>Rentabilidade</th>
+        </thead>
+    {% for acao in acoes %}
+        <tr>
+            <td>{{acao.codigo}}</td>
+            <td>{{acao.preco_pago}}</td>
+            <td>{{acao.quantidade}}</td>
+            <td>{{acao.valor_pago}}</td>
+            <td>{{acao.data_compra}}</td>
+            <td>{{acao.cotacao_atual}}</td>
+            <td>{{acao.valor_atual}}</td>
+            <td>{{acao.lucro_prejuizo}}</td>
+            <td>{{acao.rentabilidade}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    
+{% endblock %}  

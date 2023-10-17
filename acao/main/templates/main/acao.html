@@ -3,4 +3,46 @@
 
 {% block content %}
     <h1>Carteira de Ações</h1>
+
+    <h3>Cadastrar Ações</h3>
+    {% for message in messages %}
+        <h3>message</h3>
+    {% endfor %}
+    {% load crispy_forms_tags %}
+    <form action="/acao/" method="post">
+        {% csrf_token %}
+        {{ form | crispy}}
+            <div class="input-group mb3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-success" type="submit">Adicionar</button>
+                </div>
+            </div>
+    </form>
+    <table>
+        <thead>
+            <th>Ativo</th>
+            <th>Preço Pago</th>
+            <th>Quantidade</th>
+            <th>Valor Pago</th>
+            <th>Data Compra</th>
+            <th>Cotação Atual</th>
+            <th>Valor Atual</th>
+            <th>Lucro/Prejuízo</th>
+            <th>Rentabilidade</th>
+        </thead>
+        {% for acao in acoes %}
+            <td>
+                <tr>{{acao.ticker}}</tr>
+                <tr>{{acao.preco_pago}}</tr>
+                <tr>{{acao.quantidade}}</tr>
+                <tr>{{acao.valor_pago}}</tr>
+                <tr>{{acao.data_compra}}</tr>
+                <tr>{{acao.cotacao_atual}}</tr>
+                <tr>{{acao.valor_atual}}</tr>
+                <tr>{{acao.lucro_prejuizo}}</tr>
+                <tr>{{acao.rentabilidade}}</tr>
+            </td>
+        {% endfor %}
+    </table>
 {% endblock %}
+
